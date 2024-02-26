@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="randomNumber"></p>
+
+    <script>
+        function rollDice() {
+            fetch('/random-number')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('randomNumber').innerText = `You Rolled A: ${data}`;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
